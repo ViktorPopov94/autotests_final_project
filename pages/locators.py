@@ -18,3 +18,6 @@ class ProductPageLocators():
     BOOK_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main p")
     # Стоимость добавленной в корзину книги:
     ADDED_BOOK_PRICE = (By.CSS_SELECTOR, ".alert.alert-safe.alert-noicon.alert-info.fade.in .alertinner strong")
+    # Сообщение о добавлении товара:
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert.alert-safe.alert-noicon.alert-success.fade.in .alertinner")
+

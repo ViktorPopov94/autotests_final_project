@@ -25,4 +25,26 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.solve_quiz_and_get_code()  # решение мат.задачи 4.3.2
     page.check_of_name_of_book()  # Проверка совпадения выбранного и добавленного товаров
     page.check_of_price_of_book()  # Проверка совпадения стоимости выбранного и добавленного товаров
+    time.sleep(9999)
 
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.click_to_add_to_basket()
+    page.should_not_be_success_message()  # Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()  # Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.click_to_add_to_basket()
+    page.element_should_disappear()  # Проверяем, что нет сообщения об успехе с помощью is_disappeared
