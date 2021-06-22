@@ -1,11 +1,12 @@
 #pytest -v --tb=line --language=en test_product_page.py
 # pytest -s test_product_page.py
 # pytest -rX -v test_product_page.py
+#pytest -s -m "new" test_product_page.py
 from .pages.product_page import ProductPage
+from .pages.main_page import MainPage
 import pytest
 import time
 
-"""
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
@@ -49,7 +50,6 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.open()
     page.click_to_add_to_basket()
     page.element_should_disappear()  # Проверяем, что нет сообщения об успехе с помощью is_disappeared
-    """
 
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
@@ -62,3 +62,14 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+@pytest.mark.new
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = MainPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    time.sleep(5)
+    page.product_in_basket_should_not_be()
+    time.sleep(5)
+    page.basket_is_empty_message_exists()
