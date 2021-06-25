@@ -1,11 +1,3 @@
-#pytest -v --tb=line --language=en test_main_page.py
-#pytest -s -m "new" test_main_page.py
-#pytest -s -m "login_guest" test_main_page.py
-"""
-В этой команде мы использовали опцию PyTest --tb=line, которая указывает, что нужно
-выводить только одну строку из лога каждого упавшего теста
-"""
-
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
@@ -56,7 +48,3 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     page.product_in_basket_should_not_be()
     time.sleep(5)
     page.basket_is_empty_message_exists()
-
-
-
-

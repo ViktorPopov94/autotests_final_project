@@ -32,4 +32,3 @@ class LoginPage(BasePage):
 
         # нажимаем "зарегистрироваться"
         self.browser.find_element(*LoginPageLocators.REGISTRATION_BUTTON).click()
-

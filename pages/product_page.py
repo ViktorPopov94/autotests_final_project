@@ -2,8 +2,6 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 from .basket_page import BasketPage
 import pytest
-#col-sm-6 product_main
-#alertinner
 class ProductPage(BasketPage):
 
     def click_to_add_to_basket(self):

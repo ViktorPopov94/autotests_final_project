@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-##posts > .item:nth-child(2) > .title
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
